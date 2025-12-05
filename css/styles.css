@@ -11,6 +11,8 @@ body {
     line-height: 1.6;
     position: relative;
     overflow-x: hidden;
+    max-width: 100%;
+    width: 100%;
 }
 
 /* Fond dynamique avec grille */
@@ -603,10 +605,11 @@ footer#contact .section-title {
     }
 
     .cv-section {
-        padding: 1.5rem;
-        margin-left: -1rem;
-        margin-right: -1rem;
-        width: calc(100% + 2rem);
+        padding: 1.5rem 1rem;
+        margin-left: calc(-50vw + 50%);
+        margin-right: calc(-50vw + 50%);
+        width: 100vw;
+        overflow-x: hidden;
     }
 
     .cv-section h3 {
@@ -662,10 +665,11 @@ footer#contact .section-title {
     }
 
     .contact-section {
-        padding: 1.5rem;
-        margin-left: -1rem;
-        margin-right: -1rem;
-        width: calc(100% + 2rem);
+        padding: 1.5rem 1rem;
+        margin-left: calc(-50vw + 50%);
+        margin-right: calc(-50vw + 50%);
+        width: 100vw;
+        overflow-x: hidden;
     }
 
     .footer-message {
