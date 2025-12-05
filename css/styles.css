@@ -62,6 +62,7 @@ nav {
     gap: 2rem;
     z-index: 1000;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    flex-wrap: wrap;
 }
 
 nav a {
@@ -69,6 +70,7 @@ nav a {
     text-decoration: none;
     font-weight: 500;
     transition: color 0.3s ease;
+    white-space: nowrap;
 }
 
 nav a:hover {
@@ -538,45 +540,353 @@ footer#contact .section-title {
 }
 
 /* Responsive */
-@media (max-width: 768px) {
-    #accueil {
-        grid-template-columns: 1fr;
-        padding-top: 8rem;
+@media (max-width: 480px) {
+    /* Mobile phones */
+    body {
+        font-size: 14px;
     }
 
     nav {
-        gap: 1rem;
-        flex-wrap: wrap;
         padding: 0.5rem 1rem;
+        gap: 0.5rem;
+        justify-content: flex-start;
+        overflow-x: auto;
     }
 
     nav a {
-        font-size: 0.9rem;
+        font-size: 0.85rem;
+        padding: 0.5rem 0.75rem;
     }
 
-    .profil-text h1 {
-        font-size: 2rem;
+    section {
+        padding: 5rem 1rem 1rem;
     }
 
-    .profil-text p {
-        font-size: 1rem;
+    #accueil {
+        padding-top: 7rem;
+        gap: 1.5rem;
+    }
+
+    .profil-photo {
+        order: -1;
     }
 
     .profile-circle {
-        width: 250px;
-        height: 250px;
+        width: 200px;
+        height: 200px;
+        border: 3px solid #2d8659;
+    }
+
+    .profil-text h1 {
+        font-size: 1.8rem;
+    }
+
+    .profil-text p {
+        font-size: 0.95rem;
+    }
+
+    .logo-companies {
+        gap: 1rem;
+        margin-top: 1rem;
+    }
+
+    .logo-companies img {
+        height: 35px;
+    }
+
+    .btn-scroll {
+        font-size: 0.9rem;
     }
 
     .section-title {
-        font-size: 1.8rem;
+        font-size: 1.5rem;
+    }
+
+    .cv-section {
+        padding: 1.5rem;
+        margin-left: -1rem;
+        margin-right: -1rem;
+        width: calc(100% + 2rem);
+    }
+
+    .cv-section h3 {
+        font-size: 1.2rem;
+    }
+
+    .cv-item {
+        padding: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .cv-item h4 {
+        font-size: 1rem;
+    }
+
+    .cv-item .date {
+        font-size: 0.8rem;
+    }
+
+    .cv-item p {
+        font-size: 0.9rem;
     }
 
     .projects-grid {
         grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .project-card {
+        margin: 0;
+    }
+
+    .project-image {
+        height: 150px;
+        font-size: 2rem;
+    }
+
+    .project-content {
+        padding: 1rem;
+    }
+
+    .project-content h4 {
+        font-size: 1.1rem;
+    }
+
+    .project-content p {
+        font-size: 0.9rem;
     }
 
     .contact-info {
         grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .contact-section {
+        padding: 1.5rem;
+        margin-left: -1rem;
+        margin-right: -1rem;
+        width: calc(100% + 2rem);
+    }
+
+    .footer-message {
+        font-size: 0.95rem;
+    }
+
+    .footer-copyright {
+        font-size: 0.8rem;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        padding: 0.6rem;
+    }
+
+    .btn-submit {
+        width: 100%;
+        padding: 0.7rem 1.5rem;
+    }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+    /* Tablets */
+    body {
+        font-size: 15px;
+    }
+
+    nav {
+        padding: 0.75rem 1.5rem;
+        gap: 1.5rem;
+    }
+
+    nav a {
+        font-size: 0.95rem;
+    }
+
+    section {
+        padding: 5.5rem 1.5rem 2rem;
+    }
+
+    #accueil {
+        padding-top: 7.5rem;
+        gap: 2rem;
+        grid-template-columns: 1fr;
+    }
+
+    .profil-photo {
+        order: -1;
+    }
+
+    .profile-circle {
+        width: 280px;
+        height: 280px;
+    }
+
+    .profil-text h1 {
+        font-size: 2.2rem;
+    }
+
+    .profil-text p {
+        font-size: 1.05rem;
+    }
+
+    .logo-companies {
+        gap: 1.5rem;
+    }
+
+    .logo-companies img {
+        height: 40px;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .cv-section {
+        padding: 1.5rem calc((100vw - 768px) / 2 + 1.5rem);
+        margin-left: calc(-50vw + 50%);
+        margin-right: calc(-50vw + 50%);
+        width: 100vw;
+    }
+
+    .cv-section h3 {
+        font-size: 1.3rem;
+    }
+
+    .cv-item {
+        padding: 1.2rem;
+    }
+
+    .cv-item h4 {
+        font-size: 1.05rem;
+    }
+
+    .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+
+    .project-image {
+        height: 160px;
+    }
+
+    .contact-info {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+
+    .contact-section {
+        padding: 2rem calc((100vw - 768px) / 2 + 1.5rem);
+    }
+
+    .form-group {
+        max-width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    /* Small desktops / Large tablets */
+    nav {
+        gap: 1.5rem;
+        padding: 1rem 1.5rem;
+    }
+
+    section {
+        padding: 6rem 2rem 2rem;
+    }
+
+    #accueil {
+        gap: 2.5rem;
+    }
+
+    .profile-circle {
+        width: 320px;
+        height: 320px;
+    }
+
+    .profil-text h1 {
+        font-size: 3rem;
+    }
+
+    .section-title {
+        font-size: 2.2rem;
+    }
+
+    .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .cv-container {
+        max-width: 850px;
+    }
+
+    .contact-info {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1025px) and (max-width: 1440px) {
+    /* Standard desktops */
+    #accueil {
+        gap: 3rem;
+    }
+
+    .profile-circle {
+        width: 350px;
+        height: 350px;
+    }
+
+    .projects-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (min-width: 1441px) {
+    /* Large screens and up */
+    nav {
+        padding: 1.2rem 3rem;
+        gap: 3rem;
+    }
+
+    section {
+        padding: 7rem 3rem 2rem;
+    }
+
+    #accueil {
+        gap: 4rem;
+        padding-top: 7rem;
+    }
+
+    .profile-circle {
+        width: 400px;
+        height: 400px;
+    }
+
+    .profil-text h1 {
+        font-size: 4rem;
+    }
+
+    .profil-text p {
+        font-size: 1.4rem;
+    }
+
+    .section-title {
+        font-size: 2.8rem;
+    }
+
+    .projects-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2.5rem;
+    }
+
+    .cv-container {
+        max-width: 1000px;
+    }
+
+    .contact-info {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2.5rem;
     }
 }
 
