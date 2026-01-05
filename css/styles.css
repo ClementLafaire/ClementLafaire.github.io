@@ -90,6 +90,11 @@ section {
     z-index: 1;
 }
 
+#projets {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+}
+
 /* Page de garde */
 #accueil {
     display: grid;
