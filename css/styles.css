@@ -190,6 +190,11 @@ section {
     margin-top: 0;
 }
 
+#projets .section-title {
+    width: 100%;
+    margin: 0 auto 2rem auto;
+}
+
 .cv-section {
     margin-bottom: 0;
     background: #303030;
