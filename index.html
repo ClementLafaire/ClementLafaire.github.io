@@ -13,24 +13,35 @@
     <div id="grid-background"></div>
 
     <!-- Navigation -->
-    <nav>
+    <nav id="nav-menu">
         <a href="#accueil">Accueil</a>
         <a href="#cv">CV</a>
         <a href="#projets">Projets</a>
         <a href="#contact">Contact</a>
     </nav>
 
+    <!-- Hamburger Menu -->
+    <div id="hamburger-menu" class="hamburger-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
     <!-- Section Accueil -->
     <section id="accueil">
+        <!-- Texte géant en arrière-plan -->
+        <div class="hero-background-port"> - - Portfolio -</div>
+        <div class="hero-background-text">CLÉMENT</div>
+        <div class="hero-background-text hero-background-text-second">LAFAIRE</div>
+        
+        <!-- Image au premier plan -->
         <div class="profil-photo">
-            <div class="profile-circle">
                 <img id="profile-img" src="assets/photo.PNG" alt="Clément LAFAIRE">
-            </div>
         </div>
+        
+        <!-- Infos et logos en bas à gauche -->
         <div class="profil-text">
-            <p style="font-size: clamp(0.9rem, 2vw, 1rem); margin-bottom: 0;">Portfolio</p>
-            <h1 style="font-size: clamp(1.8rem, 5vw, 3.5rem);">Clément LAFAIRE</h1>
-            <p style="font-size: clamp(0.95rem, 2.5vw, 1.3rem);">Apprenti ingénieur en électronique embarquée</p>
+            <h1>Apprenti ingénieur en électronique embarquée</h1>
             <div class="logo-companies">
                 <img id="logo-eseo" src="assets/3-ESEO-GrECOLE-RVB.png" alt="ESEO">
                 <img id="logo-lacme" src="assets/lacme_logo-1024x153.png" alt="LACME">
@@ -44,111 +55,184 @@
     <!-- Section CV -->
     <section id="cv">
         <div class="cv-container">
-            <div class="cv-section cv-section-dark">
-                <h2 class="section-title" style="margin-left: calc(-50vw + 50% + 2rem); margin-right: calc(-50vw + 50% + 2rem); margin-top: -2rem; margin-bottom: 2rem; padding: 2rem 2rem 1rem 2rem;">Curriculum Vitae</h2>
-                <h3>Expérience Professionnelle</h3>
-                <div class="cv-item">
-                    <h4>Apprenti Ingénieur chez LACME SAS</h4>
-                    <span class="date">2024 - 2027 | 3 ans</span>
-                    <span class="date">La Flèche (72)</span>
-                    <p>Réalisation de projets end-to-end.<br>
-                        - Conception de solutions électroniques embarquées.<br>
-                        - Design de cartes electroniques.<br>
-                        - Programmation de microcontrôleurs.</p>
+            <h2 class="cv-title">Parcours</h2>
+                <div class="cv-row">
+                    <span class="role">Apprenti Ingénieur</span>
+                    <span class="company">LACME</span>
+                    <span class="date">2024 - 2027</span>
                 </div>
-                <div class="cv-item">
-                    <h4>Stage Bac+3 chez LACME SAS</h4>
-                    <span class="date">2024 | 16 semaines</span>
-                    <span class="date">La Flèche (72)</span>
-                    <p>Migration en lieu et place d'un microcontrôleurs Renesas</p>
-                </div>
-                <div class="cv-item">
-                    <h4>Employé libre service chez Leclerc</h4>
-                    <span class="date">2020-21-22-23 | 9 mois</span>
-                    <span class="date">Soustons (40) - Angers (49)</span>
-                    <p>Réception et mise en rayon des produits.<br>
-                       Gestion des stocks et relation client.</p>
-                </div>
-            </div>
 
-            <div class="cv-section cv-section-light">
-                <h3>Formation</h3>
-                <div class="cv-item">
-                    <h4>2024 - 2027 | Apprenti Ingénieur</h4>
-                    <span class="date">ESEO Angers (49) | LACME La Flèche (72)</span>
-                    <p>Formation aux metiers de l'ingénieur.<br>
-                    Spécialisation Sytèmes Embarqués - Electronique & RadioFréquence.</p>
+                <div class="cv-row">
+                    <span class="role">Stage R&D</span>
+                    <span class="company">LACME</span>
+                    <span class="date">2024</span>
                 </div>
-                <div class="cv-item">
-                    <h4>2021 - 2024 | Bachelor Universitaire et Technologique</h4>
-                    <span class="date">IUT Angers (49)</span>
-                    <p>Option Electronique et Systèmes Embarqués</p>
-                </div>
-                <div class="cv-item">
-                    <h4>2020 | Baccalaureat Scientifique</h4>
-                    <span class="date">Lycée Edouard Branly Dreux (28)</span>
-                    <p>Option Sciences de l'ingénieur.<br>
-                       Section européenne anglais.</p>
-                </div>
-            </div>
 
-            <div class="cv-section cv-section-dark">
-                <h3>Compétences</h3>
-                <div class="cv-item">
-                    <p>• Électronique embarquée et microcontrôleurs (STM32, Renesas, TELIT)</p>
-                    <p>• Programmation : C, C++, Labview</p>
-                    <p>• Environnements : Win 10/11, Ubuntu, Ubuntu Serveur</p>
-                    <p>• Outils : Altium Designer, Solidworks, Git</p>
+                <div class="cv-row">    
+                    <span class="role">BUT GEII</span>
+                    <span class="company">IUT Angers</span>
+                    <span class="date">2021 - 2024</span>
                 </div>
-            </div>
+
+                <div class="cv-row">
+                    <span class="role">Saisonnier employé libre service</span>
+                    <span class="company">LECLERC</span>
+                    <span class="date">2020 - 21 - 22 - 23</span>
+                </div>
+
+                <div class="cv-row">
+                    <span class="role">BAC S Science de l'Ingénieur/Euro</span>
+                    <span class="company">Lycée E.Branly Dreux</span>
+                    <span class="date">2017 - 2020</span>
+                </div>
+        </div>
+
+        <div class="cv-certifications">
+            <h2 class="certifications-title">Certifications</h2>
+                <div class="cv-row">
+                    <span class="role">Certificat Voltaire</span>
+                    <span class="company">---</span>
+                    <span class="date">à venir</span>
+                </div>
+
+                <div class="cv-row">
+                    <span class="role">TOEIC</span>
+                    <span class="company">930 / 990</span>
+                    <span class="date">2024</span>
+                </div>
+                
+                <div class="cv-row">
+                    <span class="role">Cambridge Certifications</span>
+                    <span class="company">C1</span>
+                    <span class="date">2020</span>
+                </div>
+                
+                <div class="cv-row">
+                    <span class="role">Deutsches Sprachdiplom<br> der KWK</span>
+                    <span class="company">B1</span>
+                    <span class="date">2020</span>
+                </div>
         </div>
     </section>
 
     <!-- Section Projets -->
     <section id="projets">
         <div class="projets-container">
-            <h2 class="section-title">Mes Projets WIP</h2>
+            <h2 class="section-title">Mes Projets</h2>
 
-            <div class="projects-grid">
+            <div data-slider class="projects-slider">
                 <!-- Projet 1 -->
-                <div class="project-card">
-                    <div class="project-image">📱</div>
-                    <div class="project-content">
-                        <h4>Projet 1</h4>
-                        <p>Description courte de votre projet.</p>
-                        <div class="project-tags">
-                            <span class="tag">Électronique</span>
-                            <span class="tag">C++</span>
+                <div class="projects-slider-item">
+                    <div class="projects-slider-inner">
+                        <div data-p class="projects-slider-parallax">
+                            <a href="projects/project1.html" class="project-card">
+                                <div class="image-frame">
+                                    <span class="top-tag">- 001 - - -</span>
+                                    <div class="image-container">
+                                        <img src="assets/Scott Yu-Jan.jpg" alt="Photo du projet Alim">
+                                    </div>
+                                </div>
+
+                                <div class="card-info">
+                                    <h4 class="main-title">Alimentation 60V</h4>
+                                    <p class="description">
+                                        Conception d'une alimentation à découpage Buck/Boost avec routage PCB et simulation thermique.
+                                    </p>
+                                </div>
+                            </a>
                         </div>
-                        <a href="projects/project1.html" class="project-link">En savoir plus →</a>
+                    </div>
+                </div>
+<!--------------------------------------------------------------------------
+                Projet 2
+                <div class="projects-slider-item">
+                    <div class="projects-slider-inner">
+                        <div data-p class="projects-slider-parallax">
+                            <a href="projects/project2.html" class="project-card">
+                                <div class="image-frame">
+                                    <span class="top-tag">Projet 2</span>
+                                    <div class="image-container">
+                                        <img src="assets/Scott Yu-Jan.jpg" alt="Photo du projet Alim">
+                                    </div>
+                                </div>
+
+                                <div class="card-info">
+                                    <h4 class="main-title">Robot</h4>
+                                    <p class="description">
+                                        Robot go vroom
+                                    </p>
+                                </div>
+                            </a>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Projet 2 -->
-                <div class="project-card">
-                    <div class="project-image">🤖</div>
-                    <div class="project-content">
-                        <h4>Projet 2</h4>
-                        <p>Description courte de votre projet.</p>
-                        <div class="project-tags">
-                            <span class="tag">Robotique</span>
-                            <span class="tag">Python</span>
+                Projet 3
+                <div class="projects-slider-item">
+                    <div class="projects-slider-inner">
+                        <div data-p class="projects-slider-parallax">
+                            <a href="projects/project3.html" class="project-card">
+                                <div class="image-frame">
+                                    <span class="top-tag">Projet 3</span>
+                                    <div class="image-container">
+                                        <img src="assets/Scott Yu-Jan.jpg" alt="Photo du projet Alim">
+                                    </div>
+                                </div>
+
+                                <div class="card-info">
+                                    <h4 class="main-title">Robot</h4>
+                                    <p class="description">
+                                        Robot go vroom
+                                    </p>
+                                </div>
+                            </a>
                         </div>
-                        <a href="projects/project2.html" class="project-link">En savoir plus →</a>
                     </div>
                 </div>
 
-                <!-- Projet 3 -->
-                <div class="project-card">
-                    <div class="project-image">🌐</div>
-                    <div class="project-content">
-                        <h4>Projet 3</h4>
-                        <p>Description courte de votre projet.</p>
-                        <div class="project-tags">
-                            <span class="tag">Web</span>
-                            <span class="tag">React</span>
+                Projet 4 
+                <div class="projects-slider-item">
+                    <div class="projects-slider-inner">
+                        <div data-p class="projects-slider-parallax">
+                            <a href="projects/project4.html" class="project-card">
+                                <div class="image-frame">
+                                    <span class="top-tag">Projet 4</span>
+                                    <div class="image-container">
+                                        <img src="assets/Scott Yu-Jan.jpg" alt="Photo du projet Alim">
+                                    </div>
+                                </div>
+
+                                <div class="card-info">
+                                    <h4 class="main-title">Robot</h4>
+                                    <p class="description">
+                                        Robot go vroom
+                                    </p>
+                                </div>
+                            </a>
                         </div>
-                        <a href="projects/project3.html" class="project-link">En savoir plus →</a>
+                    </div>
+                </div>
+----------------------------------------------------------------------->
+                <!-- SOON ! -->
+                <div class="projects-slider-item">
+                    <div class="projects-slider-inner">
+                        <div data-p class="projects-slider-parallax">
+                            <a href="https://www.linkedin.com/in/cl%C3%A9ment-lafaire/" class="project-card">
+                                <div class="image-frame">
+                                    <span class="top-soon">Arrive bientôt !</span>
+                                    <div class="image-container">
+                                        <img src="assets/Scott Yu-Jan.jpg" alt="Photo du projet Alim">
+                                    </div>
+                                </div>
+
+                                <div class="card-info">
+                                    <h4 class="main-title">Suivez l'avancée de mes projets sur</h4>
+                                    <div class="logo-linkd">
+                                        <img id="logo-lnkd" src="assets/LNKD.png" alt="LinkedIn">
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>

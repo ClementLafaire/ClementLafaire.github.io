@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projet 5 - Clément LAFAIRE</title>
+    <meta name="description" content="Détails du projet 5 - Portfolio de Clément Lafaire">
+    <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        /* Styles spécifiques pour les pages de projet */
+        .project-hero {
+            position: relative;
+            height: 60vh;
+            min-height: 400px;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .project-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 1;
+        }
+
+        .project-hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 2rem;
+        }
+
+        .project-hero h1 {
+            font-size: clamp(2rem, 5vw, 4rem);
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+        }
+
+        .project-hero p {
+            font-size: clamp(1rem, 2vw, 1.5rem);
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+        }
+
+        .project-content-section {
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+
+        .project-intro {
+            width: 100%;
+            padding: 4rem 2rem;
+            text-align: center;
+            background: #2a2a2a;
+        }
+
+        .project-intro h2 {
+            font-size: 2.5rem;
+            color: #2d8659;
+            margin-bottom: 2rem;
+        }
+
+        .project-intro p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #b0b0b0;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .project-gallery {
+            width: 100%;
+            padding: 4rem 2rem;
+        }
+
+        .project-gallery h3 {
+            text-align: center;
+            font-size: 2rem;
+            color: #2d8659;
+            margin-bottom: 2rem;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        @media (min-width: 768px) {
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .gallery-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            background: #303030;
+            aspect-ratio: 16 / 9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #b0b0b0;
+            font-size: 3rem;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.8);
+            color: #b0b0b0;
+            padding: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .project-details {
+            width: 100%;
+            padding: 4rem 2rem;
+            background: #252525;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .project-details h3 {
+            font-size: 1.8rem;
+            color: #2d8659;
+            margin-bottom: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .project-details h3:first-child {
+            margin-top: 0;
+        }
+
+        .project-details p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #b0b0b0;
+            margin-bottom: 2rem;
+        }
+
+        .project-details ul {
+            margin-left: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .project-details li {
+            color: #b0b0b0;
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
+        }
+
+        .project-navigation {
+            width: 100%;
+            padding: 4rem 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .project-navigation > * {
+            flex: 1;
+            max-width: 200px;
+        }
+
+        .nav-btn {
+            background: #2d8659;
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background 0.3s ease;
+            cursor: pointer;
+        }
+
+        .nav-btn:hover {
+            background: #3fa870;
+        }
+
+        .nav-btn.back {
+            background: #555;
+        }
+
+        .nav-btn.back:hover {
+            background: #666;
+        }
+
+        .nav-btn:disabled {
+            background: #444;
+            cursor: not-allowed;
+        }
+
+        @media (max-width: 768px) {
+            .project-hero {
+                height: 50vh;
+                min-height: 300px;
+            }
+
+            .project-content-section {
+                padding: 2rem 1rem;
+            }
+
+            .project-intro h2 {
+                font-size: 2rem;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .project-navigation {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Fond dynamique avec grille -->
+    <div id="grid-background"></div>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="../index.html#accueil">Accueil</a>
+        <a href="../index.html#cv">CV</a>
+        <a href="../index.html#projets">Projets</a>
+        <a href="../index.html#contact">Contact</a>
+    </nav>
+
+    <!-- Hero Section avec image de couverture -->
+    <section class="project-hero" style="background: linear-gradient(135deg, #2d8659 0%, #1a5035 100%);">
+        <div class="project-hero-content">
+            <h1>Projet 5</h1>
+            <p>Conception de Circuits Imprimés et Électronique</p>
+        </div>
+    </section>
+
+    <!-- Contenu du projet -->
+    <section class="project-content-section">
+        <div class="project-intro">
+            <h2>À propos de ce projet</h2>
+            <p>Projet complet de conception de circuits imprimés (PCB) associé à du développement électronique embarquée. Ce projet démontre les compétences en conception de schémas, routage PCB et programmation de microcontrôleurs.</p>
+        </div>
+
+        <div class="project-gallery">
+            <h3>Galerie d'images</h3>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    🔌
+                    <div class="gallery-caption">Schéma électronique</div>
+                </div>
+                <div class="gallery-item">
+                    💾
+                    <div class="gallery-caption">Routage PCB</div>
+                </div>
+                <div class="gallery-item">
+                    🖥️
+                    <div class="gallery-caption">Microcontrôleur</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="project-details">
+            <h3>Détails techniques</h3>
+            <p>Ce projet inclut :</p>
+            <ul>
+                <li>Conception de schémas avec les standards de l'industrie</li>
+                <li>Routage PCB multicouche avec Altium Designer</li>
+                <li>Programmation en C/C++ pour microcontrôleurs (STM32, Renesas)</li>
+                <li>Gestion des contraintes thermiques et électriques</li>
+                <li>Tests et validation du circuit</li>
+            </ul>
+            <p>Les défis rencontrés et solutions apportées :</p>
+            <p>Optimisation de l'intégrité du signal, gestion des interférences électromagnétiques (EMI), réduction du bruit d'alimentation et intégration optimale des composants pour minimiser l'encombrement.</p>
+        </div>
+
+        <!-- Navigation entre projets -->
+        <div class="project-navigation">
+            <a href="project4.html" class="nav-btn back">← Précédent</a>
+            <a href="../index.html#projets" class="nav-btn back">Projets</a>
+            <!-- <a href="project1.html" class="nav-btn">Suivant →</a>-->
+        </div>
+    </section>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>

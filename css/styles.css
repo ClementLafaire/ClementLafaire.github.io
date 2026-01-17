@@ -1,3 +1,6 @@
+/* ===========================
+   RESET & GLOBAL STYLES
+   =========================== */
 * {
     margin: 0;
     padding: 0;
@@ -5,17 +8,22 @@
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
     background-color: #1a1a1a;
     color: #ffffff;
     line-height: 1.6;
     position: relative;
     overflow-x: hidden;
-    max-width: 100%;
     width: 100%;
 }
 
-/* Fond dynamique avec grille */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Background Grid */
 #grid-background {
     position: fixed;
     top: 0;
@@ -38,7 +46,7 @@ body {
 }
 
 .grid-dot.active {
-    background-color: #2d8659;
+    background-color: #45b37c;
 }
 
 svg.grid-lines {
@@ -56,15 +64,23 @@ svg.grid-lines {
 nav {
     position: fixed;
     top: 0;
+    right: 0;
     width: 100%;
-    background: rgba(26, 26, 26, 0.95);
-    padding: 1rem 2rem;
+    max-width: 300px;
+    height: 100vh;
+    background: rgba(26, 26, 26, 0.98);
+    padding: 5rem 2rem 2rem;
     display: flex;
-    justify-content: center;
-    gap: 2rem;
-    z-index: 1000;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 1.5rem;
+    z-index: 999;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.5);
+}
+
+nav.active {
+    transform: translateX(0);
 }
 
 nav a {
@@ -72,14 +88,55 @@ nav a {
     text-decoration: none;
     font-weight: 500;
     transition: color 0.3s ease;
-    white-space: nowrap;
+    font-size: 1.2rem;
 }
 
 nav a:hover {
-    color: #2d8659;
+    color: #2F3F32;
 }
 
-/* Sections générales */
+/* Hamburger Menu */
+.hamburger-menu {
+    position: fixed;
+    top: 1.5rem;
+    right: 1.5rem;
+    width: 50px;
+    height: 50px;
+    border: 2px solid #000;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    z-index: 1001;
+    transition: all 0.3s ease;
+    border-radius: 20%;
+}
+
+.hamburger-menu span {
+    display: block;
+    width: 25px;
+    height: 2px;
+    background: #ffffff;
+    transition: all 0.3s ease;
+    border-radius: 10%;
+}
+
+.hamburger-menu.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5.5px, 5.5px);
+}
+
+.hamburger-menu.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger-menu.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(5.5px, -5.5px);
+}
+
+/* General Sections */
 section {
     min-height: 100vh;
     padding: 6rem 2rem 2rem;
@@ -90,80 +147,164 @@ section {
     z-index: 1;
 }
 
-#projets {
-    padding-top: 4rem;
-    padding-bottom: 4rem;
-}
+/* ===========================
+   SECTION ACCUEIL (HERO)
+   =========================== */
 
-/* Page de garde */
+/* Hero container - Split screen layout */
 #accueil {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
-    align-items: center;
-    margin-top: 0;
-    padding-top: 6rem;
-}
-
-.profil-photo {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.profile-circle {
-    width: 350px;
-    height: 350px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #2d8659 0%, #1a5035 100%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    position: relative;
     overflow: hidden;
-    border: 5px solid #2d8659;
-    box-shadow: 0 10px 40px rgba(45, 134, 89, 0.3);
-}
-
-.profile-circle img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.profil-text {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    margin: 0;
+    padding: 0;
+    top: 0;
+    left: 0;
+}
+
+/* COUCHE 1 : Fond divisé (Top 55% - Grille) */
+#accueil::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 55%;
+    background: transparent;
+    z-index: 0;
+}
+
+/* COUCHE 1 : Fond divisé (Bottom 45% - Vert) */
+#accueil::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 35%;
+    background-color: #2F3F32;
+    z-index: 0;
+}
+
+/* Texte "Portfolio" en arrière-plan */
+.hero-background-port {
+    position: absolute;
+    top: 5%;
+    left: 3%;
+    transform: translateY(-50%);
+    z-index: 1;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 1vw;
+    font-weight: 700;
+    color: #ffffff;
+    white-space: nowrap;
+    opacity: 0.95;
+    line-height: 1;
+    letter-spacing: -0.02em;
+}
+
+/* Texte géant "CLÉMENT" en arrière-plan */
+.hero-background-text {
+    position: absolute;
+    top: 27%;
+    left: 2%;
+    transform: translateY(-50%);
+    z-index: 1;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 2vw;
+    font-weight: 900;
+    color: #ffffff;
+    white-space: nowrap;
+    opacity: 0.95;
+    line-height: 1;
+    letter-spacing: -0.02em;
+}
+
+/* Texte "LAFAIRE" sous "CLÉMENT" */
+.hero-background-text-second {
+    top: 53%;
+    left: 2.5%;
+    font-size: 1vw;
+}
+
+/* Image au premier plan */
+.profil-photo {
+    position: absolute;
+    bottom: 0;
+    left: 73%;
+    transform: translateX(-50%);
+    z-index: 2;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    height: 85vh;
+    width: auto;
+}
+
+.profil-photo img {
+    width: auto;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 0;
+}
+
+/* Texte et infos en bas à gauche (dans la zone verte) */
+.profil-text {
+    position: absolute;
+    bottom: 5%;
+    left: 5%;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    text-align: left;
 }
 
 .profil-text h1 {
-    font-size: 3.5rem;
-    margin-bottom: 0.5rem;
+    font-size: 2.5rem;
+    margin: 0;
     font-weight: 700;
     color: #ffffff;
 }
 
 .profil-text p {
-    font-size: 1.3rem;
-    color: #ffffff;
-    margin-bottom: 2rem;
+    font-size: 1.2rem;
+    color: #D4AF37;
+    margin: 0;
+}
+
+.profil-text p:first-of-type {
+    font-size: 1rem;
+    opacity: 0.9;
 }
 
 .logo-companies {
     display: flex;
-    gap: 2rem;
+    gap: 1rem;
     align-items: center;
-    margin-top: 2rem;
+    margin-top: 1.5rem;
 }
 
 .logo-companies img {
-    height: 50px;
+    height: 40px;
+    filter: brightness(0) invert(1);
+}
+
+.logo-linkd {
+    height: 40px;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    margin-bottom: 23px;;
 }
 
 .btn-scroll {
-    margin-top: 2rem;
-    font-size: 1rem;
-    color: #2d8659;
+    margin-top: 1.5rem;
+    font-size: 0.95rem;
+    color: #ffffff;
     animation: bounce 2s infinite;
     cursor: pointer;
 }
@@ -174,196 +315,221 @@ section {
     60% { transform: translateY(-5px); }
 }
 
-/* CV */
+/* ===========================
+   SECTION CV
+   =========================== */
+.cv {
+    display: flex;
+    flex-direction: column;  
+    align-items: center;    
+    gap: 30px;             
+    width: 100%;             
+}
 
 .cv-container {
-    max-width: 900px;
-    width: 100%;
+    width: 70vw;
+    background-color: rgba(47, 63, 50, 0.35);
+    border-radius: 30px;
+    padding: 2rem;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    padding: 20px;
+    margin-right: 40px;
 }
 
-.section-title {
-    font-size: 2.5rem;
-    margin-bottom: 1.5rem;
-    text-align: center;
-    color: #2d8659;
-    border-bottom: none;
-    padding: 0;
-    background: none;
-    border-radius: 0;
-    margin-left: 0;
-    margin-right: 0;
-    margin-top: 0;
+.cv-certifications {
+    width: 35vw;
+    background-color: rgba(47, 63, 50, 0.35);
+    border-radius: 30px;
+    padding: 2rem;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    padding: 20px;
 }
 
-#projets .section-title {
-    width: 100%;
-    margin: 0 auto 2rem auto;
+.cv-title {
+    font-size: 2.5rem;       
+    color: #FFFFFF;             
+    margin-left: 15rem;
+    padding-top: 10px;
+    padding-bottom: 15px;    
+    font-weight: bold;      
 }
 
-.cv-section {
-    margin-bottom: 0;
-    background: #303030;
-    border-radius: 0;
-    padding: 2rem calc((100vw - 900px) / 2 + 2rem);
-    border-left: 4px solid #2d8659;
-    margin-left: calc(-50vw + 50%);
-    margin-right: calc(-50vw + 50%);
-    width: 100vw;
-}
-
-.cv-section-dark {
-    background: #2a2a2a;
-}
-
-.cv-section-light {
-    background: #252525;
-}
-
-.cv-section-light h3 {
+.cv-row {
+    display: flex;              
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 30px;  
+    padding-bottom: 15px;   
+    border-top: 2px solid #2F3F32;  
+    font-size: 1.2rem;         
     color: #ffffff;
 }
 
-.cv-section-light .cv-item {
-    background: transparent;
-    color: #ffffff;
+.role {
+    width : 45%; 
+}
+.company {
+    width : 35%; 
+    font-weight: bold; 
+}
+.date {
+    width : 20%;
+    text-align: right; 
 }
 
-.cv-section-light .cv-item h4,
-.cv-section-light .date,
-.cv-section-light p {
-    color: #ffffff;
+/* ===========================
+   SECTION PROJETS
+   =========================== */
+/* --- Variables locales pour la carte --- */
+:root {
+    --card-border-width: 3px;
+    --card-border-color: #ffffff; /* Bordure blanche pour ressortir sur le fond vert */
+    --card-padding: 20px;
 }
-
-.cv-section h3 {
-    font-size: 1.5rem;
-    color: #2d8659;
-    margin-bottom: 1.5rem;
-    border-left: 4px solid #2d8659;
-    padding-left: 1rem;
-}
-
-.cv-item {
-    margin-bottom: 1.5rem;
-    padding: 1.5rem;
-    border-bottom: none;
-    background: transparent;
-    border-radius: 0;
-    border-left: none;
-    transition: none;
-}
-
-.cv-item:last-child {
-    margin-bottom: 0;
-}
-
-.cv-item:hover {
-    transform: none;
-    box-shadow: none;
-}
-
-.cv-item:last-child {
-    border-bottom: none;
-}
-
-.cv-item h4 {
-    font-size: 1.2rem;
-    color: #ffffff;
-    margin-bottom: 0.3rem;
-}
-
-.cv-item .date {
-    color: #2d8659;
-    font-size: 0.9rem;
-    font-weight: 500;
-}
-
-.cv-item p {
-    color: #b0b0b0;
-    margin-top: 0.5rem;
-}
-
-/* Projets */
 
 .projets-container {
-    max-width: 1000px;
     width: 100%;
 }
 
-.projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+/* On garde ton slider intact */
+.projects-slider {
+    display: flex;
+    overflow-x: auto;
     gap: 2rem;
     margin-top: 2rem;
+    width: 100%;
+    scroll-behavior: smooth;
+    padding-bottom: 2rem; /* Espace pour l'ombre au survol */
+    scrollbar-width: none;
+    overscroll-behavior-x: auto;
 }
 
+.projects-slider-item {
+    width: 80vw;
+    flex-shrink: 0;
+}
+
+@media (min-width: 768px) {
+    .projects-slider-item {
+        width: 30vw;
+    }
+}
+
+.projects-slider-inner {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    padding: 2rem 1rem;
+}
+
+/* --- NOUVEAU DESIGN DE LA CARTE --- */
 .project-card {
-    background: #303030;
-    border-radius: 10px;
-    overflow: hidden;
+    /* Fond de la carte (Ton vert sombre) */
+    background: #2F3F32; 
+    border-radius: 12px;
+    padding: var(--card-padding);
+    
+    /* Animation et transition */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border: 2px solid transparent;
+    height: 100%;
+    display: flex;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+    flex-direction: column;
+    gap: 1.5rem; /* Espace entre le cadre image et le texte du bas */
+    
+    /* Ombre légère de base */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
 .project-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 10px 30px rgba(45, 134, 89, 0.2);
-    border-color: #2d8659;
+    box-shadow: 0 15px 30px rgba(45, 134, 89, 0.3);
 }
 
-.project-image {
-    width: 100%;
-    height: 180px;
-    background: linear-gradient(135deg, #2d8659 0%, #1a5035 100%);
+/* --- LE CADRE PHOTO (Bordure + Image) --- */
+.image-frame {
+    border: var(--card-border-width) solid var(--card-border-color);
+    padding: 12px; /* Espace entre la bordure et l'image */
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    color: #b0b0b0;
-    font-size: 3rem;
+    background-color: rgba(255, 255, 255, 0.05); /* Fond très léger dans le cadre */
 }
 
-.project-content {
-    padding: 1.5rem;
-}
-
-.project-content h4 {
-    font-size: 1.3rem;
+.top-tag {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 700;
     color: #ffffff;
-    margin-bottom: 0.5rem;
+    margin-bottom: 10px;
+    width: 100%;
+    text-align: left;
 }
 
-.project-content p {
-    color: #b0b0b0;
-    margin-bottom: 1rem;
-}
-
-.project-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-bottom: 1rem;
-}
-
-.tag {
-    background: #2d8659;
+.top-soon {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 700;
     color: #ffffff;
-    padding: 0.3rem 0.7rem;
-    border-radius: 20px;
-    font-size: 0.8rem;
+    margin-bottom: 10px;
+    width: 100%;
+    text-align: center;
 }
 
-.project-link {
-    color: #2d8659;
-    text-decoration: none;
-    font-weight: 500;
-    transition: color 0.3s ease;
+.image-container {
+    width: 100%;
+    aspect-ratio: 1 / 1; /* Force le format carré */
+    background-color: #1a1a1a;
+    overflow: hidden;
+    position: relative;
+}
+
+.image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+/* Petit zoom de l'image quand on survole la carte */
+.project-card:hover .image-container img {
+    transform: scale(1.05);
+}
+
+/* --- LES INFOS DU BAS --- */
+.card-info {
+    text-align: center; /* Centré comme sur une pochette d'album */
+    padding: 0 0.5rem;
+}
+
+.main-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 0.8rem;
+    line-height: 1.2;
+}
+
+.description {
+    font-size: 0.95rem;
+    color: #b0b0b0;
+    line-height: 1.5;
+    margin-bottom: 1rem;
 }
 
 .project-link:hover {
     color: #3fa870;
+    text-decoration: underline;
 }
 
-/* Contact */
-
+/* ===========================
+   SECTION CONTACT
+   =========================== */
 .contact-container {
     max-width: 800px;
     width: 100%;
@@ -551,9 +717,12 @@ footer#contact .section-title {
     padding-top: 1.5rem;
 }
 
-/* Responsive */
+/* ===========================
+   RESPONSIVE DESIGN
+   =========================== */
+
+/* Mobile phones -------------------------------------------------------------------------
 @media (max-width: 480px) {
-    /* Mobile phones */
     body {
         font-size: 14px;
     }
@@ -576,28 +745,42 @@ footer#contact .section-title {
     }
 
     #accueil {
-        padding-top: 7rem;
-        gap: 1rem;
+        height: 100vh;
+        width: 100vw;
+    }
+
+    .hero-background-text {
+        font-size: 1vw;
+        top: 50%;
+    }
+
+    .hero-background-text-second {
+        font-size: 1vw;
     }
 
     .profil-photo {
-        order: -1;
+        height: 70vh;
     }
 
-    .profile-circle {
-        width: 180px;
-        height: 180px;
-        border: 3px solid #2d8659;
+    .profil-photo img {
+        width: auto;
+        height: 100%;
+    }
+
+    .profil-text {
+        bottom: 8%;
+        left: 5%;
+        gap: 0.5rem;
     }
 
     .profil-text h1 {
         font-size: 1.5rem;
-        margin-bottom: 0.3rem;
+        margin: 0;
     }
 
     .profil-text p {
         font-size: 0.85rem;
-        margin-bottom: 1rem;
+        margin: 0;
     }
 
     .logo-companies {
@@ -644,15 +827,6 @@ footer#contact .section-title {
 
     .cv-item p {
         font-size: 0.9rem;
-    }
-
-    .projects-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-    }
-
-    .project-card {
-        margin: 0;
     }
 
     .project-image {
@@ -704,8 +878,8 @@ footer#contact .section-title {
     }
 }
 
+Tablets -------------------------------------------------------------------------
 @media (min-width: 481px) and (max-width: 768px) {
-    /* Tablets */
     body {
         font-size: 15px;
     }
@@ -724,26 +898,41 @@ footer#contact .section-title {
     }
 
     #accueil {
-        padding-top: 7.5rem;
-        gap: 2rem;
-        grid-template-columns: 1fr;
+        height: 100vh;
+        width: 100vw;
+    }
+
+    .hero-background-text {
+        font-size: 12vw;
+    }
+
+    .hero-background-text-second {
+        font-size: 10vw;
     }
 
     .profil-photo {
-        order: -1;
+        height: 75vh;
     }
 
-    .profile-circle {
-        width: 280px;
-        height: 280px;
+    .profil-photo img {
+        width: auto;
+        height: 100%;
+    }
+
+    .profil-text {
+        bottom: 8%;
+        left: 5%;
+        gap: 0.8rem;
     }
 
     .profil-text h1 {
         font-size: 2.2rem;
+        margin: 0;
     }
 
     .profil-text p {
         font-size: 1.05rem;
+        margin: 0;
     }
 
     .logo-companies {
@@ -777,11 +966,6 @@ footer#contact .section-title {
         font-size: 1.05rem;
     }
 
-    .projects-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1.5rem;
-    }
-
     .project-image {
         height: 160px;
     }
@@ -802,8 +986,8 @@ footer#contact .section-title {
     }
 }
 
+ /*Small desktops / Large tablets -------------------------------------------------------------------------
 @media (min-width: 769px) and (max-width: 1024px) {
-    /* Small desktops / Large tablets */
     nav {
         gap: 1.5rem;
         padding: 1rem 1.5rem;
@@ -814,24 +998,33 @@ footer#contact .section-title {
     }
 
     #accueil {
-        gap: 2.5rem;
+        height: 100vh;
+        width: 100vw;
     }
 
-    .profile-circle {
-        width: 320px;
-        height: 320px;
+    .hero-background-text {
+        font-size: 14vw;
+    }
+
+    .hero-background-text-second {
+        font-size: 10vw;
+    }
+
+    .profil-photo {
+        height: 80vh;
+    }
+
+    .profil-photo img {
+        width: auto;
+        height: 100%;
     }
 
     .profil-text h1 {
-        font-size: 3rem;
+        font-size: 2.5rem;
     }
 
     .section-title {
         font-size: 2.2rem;
-    }
-
-    .projects-grid {
-        grid-template-columns: repeat(2, 1fr);
     }
 
     .cv-container {
@@ -843,24 +1036,34 @@ footer#contact .section-title {
     }
 }
 
+
+/* Standard desktops -------------------------------------------------------------------------
 @media (min-width: 1025px) and (max-width: 1440px) {
-    /* Standard desktops */
     #accueil {
-        gap: 3rem;
+        height: 100vh;
+        width: 100vw;
     }
 
-    .profile-circle {
-        width: 350px;
-        height: 350px;
+    .hero-background-text {
+        font-size: 18vw;
     }
 
-    .projects-grid {
-        grid-template-columns: repeat(3, 1fr);
+    .hero-background-text-second {
+        font-size: 10vw;
     }
-}
 
+    .profil-photo {
+        height: 85vh;
+    }
+
+    .profil-photo img {
+        width: auto;
+        height: 100%;
+    }
+}*/
+
+/* Large screens and up -------------------------------------------------------------------------*/
 @media (min-width: 1441px) {
-    /* Large screens and up */
     nav {
         padding: 1.2rem 3rem;
         gap: 3rem;
@@ -871,43 +1074,45 @@ footer#contact .section-title {
     }
 
     #accueil {
-        gap: 4rem;
-        padding-top: 7rem;
+        height: 100vh;
+        width: 100vw;
     }
 
-    .profile-circle {
-        width: 400px;
-        height: 400px;
+    .hero-background-text {
+        font-size: 18vw;
+    }
+
+    .hero-background-text-second {
+        font-size: 10vw;
+    }
+
+    .profil-photo {
+        height: 85vh;
+    }
+
+    .profil-photo img {
+        width: auto;
+        height: 100%;
     }
 
     .profil-text h1 {
-        font-size: 4rem;
+        font-size: 2.8rem;
     }
 
     .profil-text p {
-        font-size: 1.4rem;
+        font-size: 1.2rem;
     }
 
     .section-title {
         font-size: 2.8rem;
     }
 
-    .projects-grid {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 2.5rem;
-    }
-
     .cv-container {
-        max-width: 1000px;
+        max-width: 100vw;
     }
 
     .contact-info {
         grid-template-columns: repeat(3, 1fr);
         gap: 2.5rem;
     }
-}
-
-/* Smooth scrolling */
-html {
-    scroll-behavior: smooth;
 }
