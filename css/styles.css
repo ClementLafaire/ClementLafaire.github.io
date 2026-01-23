@@ -386,69 +386,91 @@ section {
   cursor: pointer;
 }
 
-/* On garde la base qui fonctionne (position, z-index, etc.) */
+
 .tooltiptext {
     visibility: hidden;
-    width: 700px; /* Un peu plus large pour une carte */
-    background-color: rgba(255, 246, 232, 0.98); /* Fond quasi opaque pour la lisibilité */
+    width: 700px;
+    background-color: rgba(255, 246, 232, 0.98);
     color: #2F3F32;
-    padding: 15px; /* Un peu plus d'espace interne */
-    border-radius: 12px; /* Coins plus arrondis style "carte" */
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2); /* Une ombre pour donner du relief */
+    padding: 15px; 
+    border-radius: 12px; 
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2); 
     
-    /* Indispensable pour que le JS fonctionne */
     position: fixed;
     pointer-events: none;
     z-index: 1000;
     opacity: 0;
     transition: opacity 0.2s;
     
-    /* Nouveau : On organise l'intérieur en colonnes */
     display: flex;
     flex-direction: column;
-    gap: 10px; /* Espace entre header, texte et image */
+    gap: 10px; 
 }
 
 /* --- Style de l'En-tête (Logo + Titre) --- */
 .tt-header {
     display: flex;
-    align-items: center; /* Centre verticalement logo et titre */
-    gap: 12px; /* Espace entre le logo et le titre */
-    border-bottom: 1px solid rgba(47, 63, 50, 0.1); /* Ligne de séparation subtile */
+    align-items: center; 
+    gap: 12px; 
+    border-bottom: 1px solid rgba(47, 63, 50, 0.1); 
     padding-bottom: 8px;
 }
 
 .tt-logo {
-    width: 120px;  /* Taille fixe pour le logo */
+    width: 120px; 
     height: 60px;
-    object-fit: contain; /* L'image ne sera pas déformée */
+    object-fit: contain;
     border-radius: 4px;
 }
 
 .tt-title {
     font-weight: bold;
     font-size: 1.1rem;
-    text-align: left; /* Collé à gauche comme demandé */
+    text-align: left;
 }
 
 /* --- Style du texte --- */
+.tt-media {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.tt-text-content {
+    display: flex;
+    flex-direction: column; 
+    flex: 1;
+}
+
+.tt-title-desc {
+    padding-top: 0;
+    margin-bottom: 5px; 
+    font-size: 1rem;
+    line-height: 1.2;
+    text-align: left;
+    font-weight: bold;
+    color: #2F3F32;
+}
+
 .tt-desc {
-    margin: 0; /* Enlève les marges par défaut des paragraphes */
+    margin: 0; 
     font-size: 0.9rem;
     line-height: 1.4;
     text-align: left;
 }
 
-/* --- Style de l'image optionnelle --- */
 .tt-media img {
-    width: 100%; /* Prend toute la largeur de la tooltip */
+    max-width: 100%; 
+    width: auto;
     height: auto;
     border-radius: 6px;
-    display: block; /* Évite les petits espaces blancs sous les images */
+    display: block;
     margin-top: 5px;
+    gap: 8px;
 }
 
-/* L'apparition au survol (inchangé) */
 .tooltip:hover .tooltiptext {
     visibility: visible;
     opacity: 1;
