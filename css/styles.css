@@ -293,6 +293,9 @@ section {
     filter: brightness(0) invert(1);
 }
 
+.logo-companies cvcard {
+    filter: brightness(0) invert(0.7) sepia(1) saturate(5) hue-rotate(100deg);
+}
 .logo-linkd {
     height: 40px;
     display: flex;
@@ -375,6 +378,80 @@ section {
 .date {
     width : 20%;
     text-align: right; 
+}
+
+.tooltip {
+  display: flex;
+  border-bottom: 1px dotted black; 
+  cursor: pointer;
+}
+
+/* On garde la base qui fonctionne (position, z-index, etc.) */
+.tooltiptext {
+    visibility: hidden;
+    width: 700px; /* Un peu plus large pour une carte */
+    background-color: rgba(255, 246, 232, 0.98); /* Fond quasi opaque pour la lisibilité */
+    color: #2F3F32;
+    padding: 15px; /* Un peu plus d'espace interne */
+    border-radius: 12px; /* Coins plus arrondis style "carte" */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2); /* Une ombre pour donner du relief */
+    
+    /* Indispensable pour que le JS fonctionne */
+    position: fixed;
+    pointer-events: none;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.2s;
+    
+    /* Nouveau : On organise l'intérieur en colonnes */
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Espace entre header, texte et image */
+}
+
+/* --- Style de l'En-tête (Logo + Titre) --- */
+.tt-header {
+    display: flex;
+    align-items: center; /* Centre verticalement logo et titre */
+    gap: 12px; /* Espace entre le logo et le titre */
+    border-bottom: 1px solid rgba(47, 63, 50, 0.1); /* Ligne de séparation subtile */
+    padding-bottom: 8px;
+}
+
+.tt-logo {
+    width: 120px;  /* Taille fixe pour le logo */
+    height: 60px;
+    object-fit: contain; /* L'image ne sera pas déformée */
+    border-radius: 4px;
+}
+
+.tt-title {
+    font-weight: bold;
+    font-size: 1.1rem;
+    text-align: left; /* Collé à gauche comme demandé */
+}
+
+/* --- Style du texte --- */
+.tt-desc {
+    margin: 0; /* Enlève les marges par défaut des paragraphes */
+    font-size: 0.9rem;
+    line-height: 1.4;
+    text-align: left;
+}
+
+/* --- Style de l'image optionnelle --- */
+.tt-media img {
+    width: 100%; /* Prend toute la largeur de la tooltip */
+    height: auto;
+    border-radius: 6px;
+    display: block; /* Évite les petits espaces blancs sous les images */
+    margin-top: 5px;
+}
+
+/* L'apparition au survol (inchangé) */
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
 }
 
 /* ===========================

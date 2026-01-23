@@ -277,3 +277,15 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
+function mouseTracking(e, parent) {
+    var tooltipSpan = parent.querySelector('.tooltiptext');
+
+    var offsetX = 15;
+    var offsetY = 15;
+
+    if (tooltipSpan) {
+        tooltipSpan.style.left = (e.clientX + offsetX) + "px";
+        tooltipSpan.style.top = (e.clientY + offsetY) + "px";
+    }
+}
